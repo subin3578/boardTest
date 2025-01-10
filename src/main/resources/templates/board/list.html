@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시판 목록</title>
-    <link rel="stylesheet" th:href="@{/board.css}"/>
+    <link rel="stylesheet" th:href="@{/css/board.css}"/>
  <script>
    function deleteBoard(button) {
      // data-board-id 속성에서 boardId 값을 가져오기
@@ -34,11 +34,13 @@
  </script>
   </head>
   <body>
-    <div class="container">
+    <div class="wrapper">
       <header>
-        <h1>게시판 목록</h1>
+
       </header>
+      <div class="container">
       <main>
+        <h1>게시판 목록</h1>
         <table class="board-table">
           <thead>
             <tr>
@@ -86,6 +88,7 @@
         <button class="button write-button" th:onclick="|location.href='@{/board/write}'|" >글쓰기</button>
         <button class="button delete-button">삭제</button>
       </main>
+      </div>
     </div>
   </body>
 </html>

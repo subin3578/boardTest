@@ -67,6 +67,7 @@ public class BoardController {
     @PostMapping("/modify")
     public String modifyArticle(ArticleModifyDTO articleDTO) {
 
+        // front, back 이중 validation 처리
         if(articleDTO.getTitle().length() > 20){
             throw new IllegalArgumentException("제목 길이 제한이 넘어섰습니다.");
         }else if(articleDTO.getContent().length() > 20){
