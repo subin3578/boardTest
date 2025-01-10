@@ -31,8 +31,6 @@ public class BoardController {
         model.addAttribute("totalPages", articles.getTotalPages());
         model.addAttribute("currentPage", page);
 
-
-
         return "board/list";
     }
 
@@ -46,12 +44,20 @@ public class BoardController {
 
     @GetMapping("/write")
     public String write() {
+
         return "board/write";
     }
 
     // 글 작성
     @PostMapping("/write")
     public String writeArticle(@ModelAttribute ArticleRequestDTO articleRequestDTO) {
+
+        // 프론트에서 Validation 추가 했으나 백에서도 추가
+        if(articleRequestDTO.getTitle().length() > 20){
+            throw new IllegalArgumentException("제목 길이 제한이 넘어섰습니다.");
+        }else if(articleRequestDTO.getContent().length() > 20){
+            throw new IllegalArgumentException("내용 길이 제한이 넘어섰습니다.");
+        }
 
         boardService.saveArticle(articleRequestDTO);
 
@@ -60,6 +66,12 @@ public class BoardController {
 
     @PostMapping("/modify")
     public String modifyArticle(ArticleModifyDTO articleDTO) {
+
+        if(articleDTO.getTitle().length() > 20){
+            throw new IllegalArgumentException("제목 길이 제한이 넘어섰습니다.");
+        }else if(articleDTO.getContent().length() > 20){
+            throw new IllegalArgumentException("내용 길이 제한이 넘어섰습니다.");
+        }
 
         boardService.modifyArticle(articleDTO);
 

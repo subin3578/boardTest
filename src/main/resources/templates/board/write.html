@@ -5,7 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>글 쓰기</title>
     <link rel="stylesheet" th:href="@{/board.css}"/>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
 
+            const titleText = document.getElementById("title");
+            const contentText = document.getElementById("content");
+
+           const textLimitFilter = (text, maxLength) => {
+                text.addEventListener("input", () => {
+                        const currentText = text.value;
+                        if (currentText.length > maxLength) {
+                            text.value = currentText.substring(0, maxLength);
+                            alert(`최대 ${maxLength}자 까지만 입력이 가능합니다.`);
+                        }
+                    }
+                )
+            }
+            textLimitFilter(titleText,20);
+            textLimitFilter(contentText,20);
+        });
+    </script>
   </head>
   <body>
     <div class="container">
@@ -16,7 +35,7 @@
          <form class="form" th:action="@{/board/write}" method="post">
           <div class="form-group">
             <label for="title" >제목</label>
-            <input type="text" id="title" name="title" maxlength='20' required />
+            <input type="text" id="title" name="title"  required />
           </div>
           <div class="form-group">
             <label for="author">작성자</label>
@@ -24,7 +43,7 @@
           </div>
           <div class="form-group">
             <label for="content">내용</label>
-            <textarea id="content" name="content" rows="10"  maxlength='20' required></textarea>
+            <textarea id="content" name="content" rows="10"  required></textarea>
           </div>
              <div class="button-container">
                  <button type="submit" class="button submit-button">저장</button>

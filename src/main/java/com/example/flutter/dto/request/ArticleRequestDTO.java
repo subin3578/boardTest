@@ -14,5 +14,4 @@ public class ArticleRequestDTO {
     private String content;
     private String author = "anomynous";
 
-
 }
