@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시판 목록</title>
+    <link rel="stylesheet" th:href="@{/board.css}"/>
+ <script>
+   function deleteBoard(button) {
+     // data-board-id 속성에서 boardId 값을 가져오기
+     const id = button.getAttribute("data-article-id");
+
+     if (confirm("정말로 삭제하시겠습니까?")) {
+       fetch(`/api/article/${id}`, {
+         method: 'DELETE',
+         headers: {
+           'Content-Type': 'application/json'
+         }
+       })
+               .then(response => {
+                 if (response.ok) {
+                   alert("삭제되었습니다.");
+                   window.location.href = "/board/list";
+                 } else {
+                   alert("삭제에 실패했습니다.");
+                 }
+               })
+               .catch(error => {
+                 console.error("삭제 중 오류 발생:", error);
+                 alert("삭제 중 오류가 발생했습니다.");
+               });
+     }
+   }
+ </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>게시판 목록</h1>
+      </header>
+      <main>
+        <table class="board-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" /></th>
+              <th>번호</th>
+              <th>제목</th>
+              <th>내용</th>
+              <th>관리</th>
+
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr th:each="article, stat: ${articles}">
+              <td><input type="checkbox" /></td>
+              <td><span th:text="${article.id}"></span></td>
+              <td><span th:text="${article.title}"></span></td>
+              <td><span th:text="${article.content}"></span></td>
+              <td>
+                <a th:href="@{/board/modify/{id}(id=${article.id})}" class="modify-btn">수정</a>
+                <a id="deleteBtn" th:data-article-id="${article.id}" onclick="deleteBoard(this)">삭제</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <button class="page-btn"
+                  th:disabled="${currentPage == 0}"
+                  th:onclick="'window.location.href=\'?page=' + ${currentPage - 1} + '&size=5\''">
+            이전
+          </button>
+          <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                        <button class="page-btn"
+                                th:classappend="${i == currentPage} ? 'active'"
+                                th:onclick="'window.location.href=\'?page=' + ${i} + '&size=5\''"
+                                th:text="${i + 1}">1</button>
+                    </span>
+          <button class="page-btn"
+                  th:disabled="${currentPage + 1 == totalPages}"
+                  th:onclick="'window.location.href=\'?page=' + ${currentPage + 1} + '&size=5 \''">
+            다음
+          </button>
+        </div>
+
+        <button class="button write-button" th:onclick="|location.href='@{/board/write}'|" >글쓰기</button>
+        <button class="button delete-button">삭제</button>
+      </main>
+    </div>
+  </body>
+</html>

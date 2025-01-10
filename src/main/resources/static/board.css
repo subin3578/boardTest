@@ -1,0 +1,204 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.board-table {
+    padding: 10px;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.board-table th,
+.board-table td {
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.board-table th {
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+.board-table thead {
+    border-bottom: 1px solid #ddd;
+}
+
+.board-table tr:last-child td {
+    border-bottom: none;
+}
+
+.board-table tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.board-table th:first-child,
+.board-table td:first-child {
+    width: 5%;
+}
+
+.board-table th:nth-child(2),
+.board-table td:nth-child(2) {
+    width: 10%;
+}
+
+.board-table th:nth-child(3),
+.board-table td:nth-child(3) {
+    width:30%;
+}
+
+.board-table th:nth-child(4),
+.board-table td:nth-child(4) {
+    width: 40%;
+}
+
+.board-table th:nth-child(5),
+.board-table td:nth-child(5) {
+    width: 15%;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #007aff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+.delete-button {
+    background-color: #ff3b30;
+}
+
+.write-button:hover {
+    background-color: #005bb5;
+}
+
+.delete-button:hover {
+    background-color: #ff3b30;
+}
+
+.form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.writeform{
+    border-radius: 10px;
+    padding-top: 65px;
+    border: 1px solid #dddddd;
+    height: 520px;
+    width:auto;
+}
+
+.button-container {
+    text-align: right;
+}
+
+.button {
+    float:right;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #007aff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+.delete-button{
+    background: #ff3b30;
+}
+
+.submit-button {
+    background-color: #007aff;
+}
+
+.submit-button:hover {
+    background-color: #005bb5;
+}
+
+.list-button {
+    color: #007aff;
+    background-color: #ffffff;
+    border: 1px solid #007aff;
+}
+
+.list-button:hover {
+    background-color: #e6f0ff;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.page-btn {
+    margin: 0 5px;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #666;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글 수정</title>
+    <link rel="stylesheet" th:href="@{/board.css}"/>
+
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>글 수정</h1>
+      </header>
+      <main>
+        <form class="form" th:action="@{/board/modify}" method="post">
+          <div class="form-group">
+            <input id="id" name= "id" th:value="${article.id}" type="hidden"></input>
+            <label for="title">제목</label>
+
+            <input
+              type="text"
+              id="title"
+              name="title"
+              th:value="${article.title}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="author">작성자</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              th:value="${article.author}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="content">내용</label>
+            <textarea id="content" name="content" rows="10" th:text="${article.content}" required></textarea>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="button submit-button">수정</button>
+
+          </div>
+        </form> <button class="button list-button" th:onclick="|location.href='@{/board/list}'|">목록</button>
+
+      </main>
+    </div>
+  </body>
+</html>
